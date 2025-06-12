@@ -19,8 +19,8 @@ class CatatanRenungan extends Model
         'label',
     ];
 
-    public function renungan(): BelongsTo
+    public function renungan()
     {
-        return $this->belongsTo(Renungan::class);
+        return $this->belongsTo(Renungan::class, 'renungan_id');
     }
 }

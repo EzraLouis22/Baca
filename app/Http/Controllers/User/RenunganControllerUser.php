@@ -13,4 +13,10 @@ class RenunganControllerUser extends Controller
         $renungans = Renungan::orderBy('id', 'desc')->limit(1)->get();
         return view('user.home.beranda', compact('renungans'));
     }
+
+    public function index()
+    {
+        $catatanRenungan = Renungan::orderBy('id', 'desc')->paginate(10);
+        return view('user.catatan.index', compact('catatanRenungan'));
+    }
 }

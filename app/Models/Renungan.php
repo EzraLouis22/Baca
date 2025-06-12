@@ -27,4 +27,9 @@ class Renungan extends Model
         'prinsip',
         'doa'
     ];
+
+    public function catatanRenungan()
+    {
+        return $this->hasMany(CatatanRenungan::class, 'renungan_id');
+    }
 }
