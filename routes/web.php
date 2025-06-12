@@ -48,5 +48,6 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/beranda', [RenunganControllerUser::class, 'beranda'])->name('user.auth.beranda');
     Route::get('/renungan', [RenunganControllerUser::class, 'index'])->name('user.renungans.index');
     Route::get('/catatan-renungan', [CatatanRenunganController::class, 'index'])->name('user.catatan.index');
-    Route::post('/catatan-renungan/create', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');
+    Route::get('/catatan-renungan/create', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');
+    Route::post('/catatan-renungan/store', [CatatanRenunganController::class, 'store'])->name('user.catatan.store');
 });

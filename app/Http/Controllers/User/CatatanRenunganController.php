@@ -15,12 +15,14 @@ class CatatanRenunganController extends Controller
         return view('user.catatan.index', compact('catatanRenungan'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('user.catatan.create', compact('renungans'));
+        $renungan_id = $request->input('renungan_id');
+        $renungan = Renungan::find($renungan_id);
+        return view('user.catatan.create', compact('renungan'));
     }
 
-    public function store(Request $request)
+    public function store(StoreRenunganRequestUser $request)
     {
         CatatanRenungan::create([
             'prinsip' => $request->input('prinsip'),
