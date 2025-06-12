@@ -14,33 +14,24 @@ class CatatanRenunganController extends Controller
         $catatanRenungan = CatatanRenungan::all();
         return view('user.catatan.index', compact('catatanRenungan'));
     }
-    public function create(Request $request)
-    {
-        $renungan = Renungan::find($request->renungan_id);
-        if (!$renungan) {
-            return redirect()->back()->withErrors(['Renungan tidak ditemukan']);
-        }
 
-        $validatedData = $request->validate([
-            'prinsip' => 'required|string',
-            'penerapan1' => 'required|string',
-            'penerapan2' => 'nullable|string',
-            'penerapan3' => 'nullable|string',
-            'label' => 'required|string',
+    public function create()
+    {
+        return view('user.catatan.create', compact('renungans'));
+    }
+
+    public function store(Request $request)
+    {
+        CatatanRenungan::create([
+            'prinsip' => $request->input('prinsip'),
+            'renungan_id' => $request->input('renungan_id'),
+            'penerapan1' => $request->input('penerapan1'),
+            'penerapan2' => $request->input('penerapan2'),
+            'penerapan3' => $request->input('penerapan3'),
+            'label' => $request->input('label'),
         ]);
 
-        $catatanRenungan = new CatatanRenungan();
-        $catatanRenungan->renungan_id = $renungan->id;
-        $catatanRenungan->prinsip = $validatedData['prinsip'];
-        $catatanRenungan->penerapan = $validatedData['penerapan'];
-        $catatanRenungan->label = $validatedData['label'];
-
-        try {
-            $catatanRenungan->save();
-            return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil dibuat');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['Gagal menyimpan data: ' . $e->getMessage()]);
-        }
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
     }
 
 }
