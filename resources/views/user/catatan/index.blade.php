@@ -52,6 +52,8 @@
   <div class="grid">
     @foreach ($catatanRenungan as $item)
     <div class="card">
+        <h2><strong>Tanggal Buat</strong></h2>
+        <p>{{ $item->created_at->format('d-m-Y') }}</p>
         <h2><strong>Prinsip</strong></h2>
         <p>"{{ $item->prinsip }}"</p> <br>
         <h2><strong>Penerapan</strong></h2>
