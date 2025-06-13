@@ -49,16 +49,16 @@
   </style>
 </head>
 <body>
-  @foreach ($catatanRenungan as $item)
   <div class="grid">
+    @foreach ($catatanRenungan as $item)
     <div class="card">
         <h2><strong>Prinsip</strong></h2>
         <p>"{{ $item->prinsip }}"</p> <br>
         <h2><strong>Penerapan</strong></h2>
         <p>{{ $item->penerapan }}</p>
     </div>
+    @endforeach
   </div>
-  @endforeach
 </body>
 </html>
 @endsection
