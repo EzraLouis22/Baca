@@ -17,36 +17,48 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      padding: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
     }
 
     .card {
       background-color: #e6effa;
-      border: 3px solid #000;
-      border-radius: 30px 30px 60px 30px;
-      padding: 16px;
-      min-height: 120px;
-      font-weight: bold;
+      border: 2px solid #000;
+      border-radius: 20px;
+      padding: 20px;
       color: #3b3750;
-      display: flex;
-      align-items: flex-start;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      color: #2b2b4f;
+    }
+
+    .card p {
+      margin: 0;
+      word-wrap: break-word;
+      background: #f0f0f0;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-weight: normal;
     }
   </style>
 </head>
 <body>
   @foreach ($catatanRenungan as $item)
   <div class="grid">
-    <div class="renungan-container grid grid-cols-3 flex-wrap justify-start gap-6 p-4">
-      <div class="card">
-        <p>{{ $item->prinsip }}</p>
+    <div class="card">
+        <h2><strong>Prinsip</strong></h2>
+        <p>"{{ $item->prinsip }}"</p> <br>
+        <h2><strong>Penerapan</strong></h2>
         <p>{{ $item->penerapan }}</p>
-        <a href="{{ route('renungan.show', $item->id) }}">Baca lebih lanjut</a>
-      </div>
     </div>
   </div>
   @endforeach
 </body>
 </html>
-
 @endsection
