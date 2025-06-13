@@ -11,7 +11,7 @@ class CreateCatatanRenunganTable extends Migration
         Schema::create('catatan_renungan', function (Blueprint $table) {
             $table->id();
             $table->string('prinsip');
-            $table->enum('penerapan', ['Penerapan 1', 'Penerapan 2', 'Penerapan 3']);
+            $table->text('penerapan');
             $table->unsignedBigInteger('renungan_id')->nullable();
             $table->foreign('renungan_id')
                   ->references('id')

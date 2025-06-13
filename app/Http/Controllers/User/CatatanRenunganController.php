@@ -23,32 +23,16 @@ class CatatanRenunganController extends Controller
         return view('user.catatan.create', compact('renungan'));
     }
 
+    // di CatatanRenunganController.php
     public function store(StoreRenunganRequestUser $request)
     {
-        $penerapan = $request->input('penerapan');
-        $value = '';
-
-        switch ($penerapan) {
-            case 'penerapan1':
-                $value = $request->input('penerapan1');
-                break;
-            case 'penerapan2':
-                $value = $request->input('penerapan2');
-                break;
-            case 'penerapan3':
-                $value = $request->input('penerapan3');
-                break;
-        }
-
         CatatanRenungan::create([
             'prinsip' => $request->input('prinsip'),
             'renungan_id' => $request->input('renungan_id'),
-            'penerapan' => $value,
+            'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-
+    
         return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
     }
-
-
 
 }

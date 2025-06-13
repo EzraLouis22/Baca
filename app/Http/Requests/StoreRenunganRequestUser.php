@@ -23,9 +23,7 @@ class StoreRenunganRequestUser extends FormRequest
     {
         return [
             'prinsip' => 'required|string|max:255',
-            'penerapan1' => 'required|string|max:255',
-            'penerapan2' => 'required|string|max:255',
-            'penerapan3' => 'required|string|max:255',
+            'penerapan' => 'required|string|max:255',
             'renungan_id' => 'required|exists:renungans,id',
             'label' => 'nullable|string|max:255',
         ];
