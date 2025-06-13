@@ -12,6 +12,9 @@ class CreateCatatanRenunganTable extends Migration
             $table->id();
             $table->string('prinsip');
             $table->text('penerapan');
+            $table->string('judul');
+            $table->date('date_renungan');
+            // Foreign key to the renungans table
             $table->unsignedBigInteger('renungan_id')->nullable();
             $table->foreign('renungan_id')
                   ->references('id')

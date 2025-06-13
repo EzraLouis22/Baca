@@ -20,6 +20,14 @@
             <form action="{{ route('user.catatan.store') }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md">
             @csrf
             <div class="mb-3">
+                <label for="judul" class="form-label text-gray">Judul Renungan</label>
+                <input type="text" class="form-control text-black border border-gray-300 rounded-lg p-2" id="judul" name="judul" value="{{ $renungan->judul }}" required style="border-width: 2px;" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="date_renungan" class="form-label text-gray">Tanggal Renungan</label>
+                <input type="date" class="form-control text-black border border-gray-300 rounded-lg p-2" id="date_renungan" name="date_renungan" value="{{ $renungan->date_renungan }}" required style="border-width: 2px;" readonly>
+            </div>
+            <div class="mb-3">
                 <label for="prinsip" class="form-label text-gray">Prinsip</label>
                 <textarea class="form-control text-black border border-gray-300 rounded-lg p-2" id="prinsip" name="prinsip" required rows="10" cols="50" style="resize: none; border-width: 2px;"></textarea>
             </div>

@@ -27,6 +27,8 @@ class CatatanRenunganController extends Controller
     public function store(StoreRenunganRequestUser $request)
     {
         CatatanRenungan::create([
+            'judul' => $request->input('judul'),
+            'date_renungan' => $request->input('date_renungan'),
             'prinsip' => $request->input('prinsip'),
             'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),

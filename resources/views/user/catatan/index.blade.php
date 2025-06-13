@@ -52,6 +52,10 @@
   <div class="grid">
     @foreach ($catatanRenungan as $item)
     <div class="card">
+        <h2><strong>Judul Renungan</strong></h2>
+        <p>{{ $item->judul }}</p> <br>
+        <h2><strong>Tanggal Renungan</strong></h2>
+        <p>{{ $item->date_renungan }}</p> <br>
         <h2><strong>Tanggal Buat</strong></h2>
         <p>{{ $item->created_at->format('d-m-Y') }}</p> <br>
         <h2><strong>Prinsip</strong></h2>

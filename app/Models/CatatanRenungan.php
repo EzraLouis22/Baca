@@ -14,6 +14,8 @@ class CatatanRenungan extends Model
     protected $table = 'catatan_renungan';
 
     protected $fillable = [
+        'judul',
+        'date_renungan',
         'prinsip',
         'penerapan',
         'renungan_id',

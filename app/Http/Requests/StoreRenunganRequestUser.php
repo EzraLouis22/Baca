@@ -22,10 +22,11 @@ class StoreRenunganRequestUser extends FormRequest
     public function rules(): array
     {
         return [
+            'judul' => 'required|string|max:255',
+            'date_renungan' => 'required|date',
             'prinsip' => 'required|string|max:255',
             'penerapan' => 'required|string|max:255',
             'renungan_id' => 'required|exists:renungans,id',
-            'label' => 'nullable|string|max:255',
         ];
     }
 }
