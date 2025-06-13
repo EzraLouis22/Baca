@@ -2,8 +2,9 @@
 
 @section('content')
   <body class="bg-gray-100 font-sans antialiased">
-    <div class="max-w-7xl mx-auto px-4 py-8">
-      @foreach ($renungans as $renungan)
+    <div class="renungan-container grid grid-cols-3 flex-wrap justify-start gap-6 p-4">
+    {{-- Loop through each renungan --}}
+      @foreach ($renungan as $renungan)
         <div class="col-lg-6">
           <article class="max-w-3xl mx-auto px-4 py-8 bg-white rounded shadow-md text-white" style="background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);">
             {{-- Header Renungan --}}

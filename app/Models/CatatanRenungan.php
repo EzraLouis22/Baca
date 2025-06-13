@@ -16,10 +16,10 @@ class CatatanRenungan extends Model
     protected $fillable = [
         'prinsip',
         'penerapan',
-        'label',
+        'renungan_id',
     ];
 
-    public function renungan()
+    public function judulRenungan()
     {
         return $this->belongsTo(Renungan::class, 'renungan_id');
     }

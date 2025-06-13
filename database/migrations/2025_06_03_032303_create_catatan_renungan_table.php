@@ -12,7 +12,6 @@ class CreateCatatanRenunganTable extends Migration
             $table->id();
             $table->string('prinsip');
             $table->enum('penerapan', ['Penerapan 1', 'Penerapan 2', 'Penerapan 3']);
-            $table->string('label')->default('');
             $table->unsignedBigInteger('renungan_id')->nullable();
             $table->foreign('renungan_id')
                   ->references('id')

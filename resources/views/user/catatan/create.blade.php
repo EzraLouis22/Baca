@@ -17,7 +17,7 @@
     <article class="max-w-3xl mx-auto px-4 py-8 bg-white rounded shadow-md text-white" style="background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);">
         <h1 class="text-2xl font-bold mb-4">Catat Renungan</h1>
         <p class="mb-4">Isi catatan Anda berdasarkan renungan yang telah Anda baca.</p>
-            <form action="{{ route('user.catatan.create') }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md">
+            <form action="{{ route('user.catatan.store') }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md">
             @csrf
             <div class="mb-3">
                 <label for="prinsip" class="form-label text-gray">Prinsip</label>

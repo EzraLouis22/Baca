@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CatatanRenungan;
 use App\Models\Renungan;
+use App\Http\Requests\StoreRenunganRequestUser;
 
 class CatatanRenunganController extends Controller
 {
@@ -24,16 +25,30 @@ class CatatanRenunganController extends Controller
 
     public function store(StoreRenunganRequestUser $request)
     {
+        $penerapan = $request->input('penerapan');
+        $value = '';
+
+        switch ($penerapan) {
+            case 'penerapan1':
+                $value = $request->input('penerapan1');
+                break;
+            case 'penerapan2':
+                $value = $request->input('penerapan2');
+                break;
+            case 'penerapan3':
+                $value = $request->input('penerapan3');
+                break;
+        }
+
         CatatanRenungan::create([
             'prinsip' => $request->input('prinsip'),
             'renungan_id' => $request->input('renungan_id'),
-            'penerapan1' => $request->input('penerapan1'),
-            'penerapan2' => $request->input('penerapan2'),
-            'penerapan3' => $request->input('penerapan3'),
-            'label' => $request->input('label'),
+            'penerapan' => $value,
         ]);
 
         return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
     }
+
+
 
 }

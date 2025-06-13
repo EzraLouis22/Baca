@@ -35,12 +35,17 @@
   </style>
 </head>
 <body>
+  @foreach ($catatanRenungan as $item)
   <div class="grid">
-    <div class="card">Prinsip</div>
-    <div class="card">Prinsip</div>
-    <div class="card">Prinsip</div>
-    <div class="card">Prinsip</div>
+    <div class="renungan-container grid grid-cols-3 flex-wrap justify-start gap-6 p-4">
+      <div class="card">
+        <p>{{ $item->prinsip }}</p>
+        <p>{{ $item->penerapan }}</p>
+        <a href="{{ route('renungan.show', $item->id) }}">Baca lebih lanjut</a>
+      </div>
+    </div>
   </div>
+  @endforeach
 </body>
 </html>
 
