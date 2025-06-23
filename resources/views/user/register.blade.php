@@ -50,8 +50,15 @@
               <input type="password" name="password" id="password" class="form-control">
           </div>
           <div class="form-group">
-              <label for="profile_picture">Foto Profil</label>
-              <input type="file" name="profile_picture" id="profile_picture" class="form-control" accept="image/*" max-size="2048">
+              <label for="role">Role</label>
+              <select name="role" id="role" class="form-control">
+                  <option value="member">Member</option>
+                  <option value="admin">Admin</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="image">Foto Profil</label>
+              <input type="file" name="image" id="image" class="form-control" accept="image/*" max-size="2048">
           </div>
           <button type="submit" class="btn btn-primary">Daftar</button>
           <p>Sudah punya akun? <a href="{{ route('user.auth.login') }}">Login</a></p>
