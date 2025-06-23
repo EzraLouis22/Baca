@@ -13,11 +13,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = DB::table('users')
+        $users = DB::table('admin_users')
             ->when($request->input('name'), function ($query, $name) {
                 return $query->where('name', 'like', '%' . $name . '%');
             })
-            ->select('id', 'name', 'email', 'profile_picture')
+            ->select('id', 'name', 'email', 'password', 'role', 'image')
             ->orderBy('id', 'desc')
             ->paginate(10);
         return view('admin.users.index', compact('users'));

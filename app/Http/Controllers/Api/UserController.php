@@ -21,7 +21,13 @@ class UserController extends Controller
         try {
             $user = User::find(auth()->user()->id);
 
-            $data = $request->only('name', 'email', 'password');
+            $data = $request->only([
+                'name',
+                'email',
+                'password',
+                'role',
+                'image'
+            ]);
 
             if($request->email != $user->email){
                 $isExistEmail = User::where('email', $request->email)->exists();
@@ -34,11 +40,11 @@ class UserController extends Controller
                 $data['password'] = bcrypt($request->password);
             }
 
-            if($request->profile_picture){
-                $profilePicture = uploadBase64Image($request->profile_picture);
-                $data['profile_picture'] = $profilePicture;
-                if($user->profile_picture) {
-                    Storage::delete('public/'.$user->profile_picture);
+            if($request->image){
+                $image = uploadBase64Image($request->image);
+                $data['image'] = $image;
+                if($user->image) {
+                    Storage::delete('public/'.$user->image);
                 }
             }
 

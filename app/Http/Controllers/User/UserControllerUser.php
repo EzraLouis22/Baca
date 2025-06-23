@@ -61,11 +61,11 @@ class UserControllerUser extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
     
-        if ($request->hasFile('profile_picture')) {
-            $file = $request->file('profile_picture');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->store('public/pp');
-            $user->profile_picture = $filename;
+            $user->image = $filename;
         }
     
         $user->save();
