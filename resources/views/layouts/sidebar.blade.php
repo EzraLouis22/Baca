@@ -1,21 +1,19 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-secondary elevation-4">
   <!-- Brand Logo -->
   <a href="/admin" class="brand-link">
-    <img src="{{ asset('picture/logo_baca.png') }}" alt="BACA Perkantas Logo" class="brand-image img-rounded elevation-3" style="opacity: .8; transition: transform 0.2s ease-in-out;">
+    <img src="{{ asset('picture/logo_baca.jpg') }}" alt="BACA Perkantas Logo" class="brand-image img-rounded elevation-3" style="opacity: .8; transition: transform 0.2s ease-in-out;">
     <br>
     <span class="brand-text font-weight-light">BACA Perkantas</span>
   </a>
   <style>
     .brand-image {
-      transition: all 0.2s ease-in-out;
-      background-color: #333; /* warna dasar */
+      transition: transform 0.2s ease-in-out;
       transform: scale(1.2); /* ukuran awal */
     }
 
     .brand-image:hover {
       transform: scale(1); /* ukuran akhir */
-      background-color: #555; /* warna hover */
     }
   </style>
 
