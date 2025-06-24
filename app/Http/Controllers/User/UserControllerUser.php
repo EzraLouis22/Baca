@@ -12,7 +12,7 @@ class UserControllerUser extends Controller
     // Login
     public function login()
     {
-        return view('user.login');
+        return view('member.login');
     }
 
     public function postLogin(Request $request)
@@ -20,7 +20,7 @@ class UserControllerUser extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (auth()->attempt($credentials)) {
-            return redirect()->route('user.auth.beranda');
+            return redirect()->route('beranda');
         }
 
         return back()->withErrors(['Invalid email or password']);
@@ -40,7 +40,7 @@ class UserControllerUser extends Controller
     // Register
     public function register()
     {
-        return view('user.register');
+        return view('member.register');
     }
     
     public function postRegister(Request $request)
@@ -70,6 +70,6 @@ class UserControllerUser extends Controller
     
         $user->save();
     
-        return redirect()->route('user.auth.login');
+        return redirect()->route('member.login');
     }
 }

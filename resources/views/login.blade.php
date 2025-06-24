@@ -33,7 +33,7 @@
         </div>
       @endif
 
-      <form method="POST" action="{{ route('member.login.post') }}">
+      <form method="POST" action="{{ route('user.auth.postLogin') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="email">Email</label>
@@ -44,7 +44,7 @@
             <input type="password" name="password" id="password" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
-        <p>Belum punya akun? <a href="{{ route('member.register') }}">Daftar</a></p>
+        <p>Belum punya akun? <a href="{{ route('user.auth.register') }}">Daftar</a></p>
       </form>
     </div>
     <!-- /.login-card-body -->
