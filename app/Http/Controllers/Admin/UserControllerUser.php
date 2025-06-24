@@ -40,7 +40,7 @@ class UserControllerUser extends Controller
     // Register
     public function register()
     {
-        return view('member.register');
+        return view('register');
     }
     
     public function postRegister(Request $request)

@@ -24,7 +24,7 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td><img alt="thumbnail" src="{{ asset('storage/'.$user->profile_picture) }}" width="100" height="100"></td>
+                        <td><img alt="thumbnail" src="{{ asset('storage/'.$user->image) }}" width="100" height="100"></td>
                     </tr>
                     @endforeach
                 </tbody>

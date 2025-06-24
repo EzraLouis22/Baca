@@ -40,7 +40,7 @@ Route::group(['prefix' => 'baca'], function () {
 
     Route::group(['middleware' => 'auth:member'], function () {
         Route::get('/beranda', [RenunganControllerUser::class, 'beranda'])->name('user.auth.beranda');
-        Route::get('/renungan', [RenunganControllerUser::class, 'index'])->name('user.renungans.index');
+        Route::get('/renungans', [RenunganControllerUser::class, 'index'])->name('user.renungans.index');
         Route::get('/catatan-renungan', [CatatanRenunganController::class, 'index'])->name('user.catatan.index');
         Route::post('/catatan-renungan', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');
     });
