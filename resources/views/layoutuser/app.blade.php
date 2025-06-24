@@ -77,7 +77,7 @@
         <img src="{{ asset('picture/logo_baca.png') }}" alt="BACA Perkantas Logo" class="w-40 h-auto" />
         <ul class="flex flex-wrap items-center justify-center space-x-4 mt-2 md:mt-0">
           <li><a href="{{ route('user.auth.beranda') }}" class="hover:text-gray-900">Beranda</a></li>
-          <li><a href="{{ route('user.auth.renungan') }}" class="hover:text-gray-900">Renungan</a></li>
+          <li><a href="{{ route('user.renungans.index') }}" class="hover:text-gray-900">Renungan</a></li>
           <li><a href="{{ route('user.catatan.index') }}" class="hover:text-gray-900">Catatanku</a></li>
           <li><a href="#" class="hover:text-gray-900">A</a></li>
         </ul>

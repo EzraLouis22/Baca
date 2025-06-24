@@ -17,12 +17,8 @@ class AuthController extends Controller
     {
         $credential = $request->only('email', 'password');
 
-        if (Auth::guard('admin')->attempt($credential)) {
-            return redirect()->route('admin.dashboard');
-        } elseif (Auth::guard('member')->attempt($credential)) {
+        if (Auth::guard('member')->attempt($credential)) {
             return redirect()->route('user.auth.beranda');
-        } else {
-            return redirect()->back()->with('error', 'Invalid Credential');
         }
 
         return redirect()->back()
