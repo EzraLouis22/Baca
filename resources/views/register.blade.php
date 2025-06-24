@@ -61,7 +61,7 @@
               <input type="file" name="image" id="image" class="form-control" accept="image/*" max-size="2048">
           </div>
           <button type="submit" class="btn btn-primary">Daftar</button>
-          <p>Sudah punya akun? <a href="{{ route('user.auth.login') }}">Login</a></p>
+          <p>Sudah punya akun? <a href="{{ route('root') }}">Login</a></p>
       </form>
     </div>
     <!-- /.login-card-body -->

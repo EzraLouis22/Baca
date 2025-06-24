@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\AdminUser;
 
 class UserControllerUser extends Controller
 {
     // Login
     public function login()
     {
-        return view('member.login');
+        return view('root');
     }
 
     public function postLogin(Request $request)
@@ -50,16 +50,17 @@ class UserControllerUser extends Controller
         }
     
         $email = $request->email;
-        $user = User::where('email', $email)->first();
+        $user = AdminUser::where('email', $email)->first();
     
         if ($user) {
             return back()->withErrors(['Email sudah digunakan, silakan gunakan email lain']);
         }
     
-        $user = new User();
+        $user = new AdminUser();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->role = 'member';
     
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -70,6 +71,6 @@ class UserControllerUser extends Controller
     
         $user->save();
     
-        return redirect()->route('member.login');
+        return redirect()->route('root')->with('success', 'Registrasi berhasil');
     }
 }
