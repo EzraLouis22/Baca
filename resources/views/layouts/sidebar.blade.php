@@ -8,12 +8,14 @@
   </a>
   <style>
     .brand-image {
-      transition: transform 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      background-color: #333; /* warna dasar */
       transform: scale(1.2); /* ukuran awal */
     }
 
     .brand-image:hover {
       transform: scale(1); /* ukuran akhir */
+      background-color: #555; /* warna hover */
     }
   </style>
 

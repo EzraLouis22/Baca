@@ -16,7 +16,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credential = $request->only('email', 'password');
+        $credential = $request->only('email', 'password' , 'role');
 
         if ($request->role == 'member') {
             if (Auth::guard('member')->attempt($credential)) {
