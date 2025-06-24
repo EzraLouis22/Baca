@@ -20,35 +20,65 @@ use App\Http\Controllers\User\CatatanRenunganController;
 */
 
 Route::get('/', function () {
-    return view('auth');
-})->name('root');
+    return view('auth')->name('auth');
+});
 
-//Route Admin
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('login', [AuthController::class, 'index'])->name('admin.auth.index');
-    Route::post('login', [AuthController::class, 'login'])->name('admin.auth.login');
-    Route::get('logout', [AuthController::class, 'logout'])->name('admin.auth.logout');
 
-    Route::group(['middleware' => 'auth:web'], function () {
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    // Guest routes (not authenticated)
+    Route::middleware('guest:web')->group(function () {
+        Route::get('login', [AuthController::class, 'index'])->name('admin.login');
+        Route::post('login', [AuthController::class, 'login'])->name('admin.login.post');
+    });
+    
+    // Authenticated admin routes
+    Route::middleware('auth:web')->group(function () {
+        Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
+        
         Route::get('/', function () {
-            return view('dashboard');
-        })->name('admin.dashboard');
+            return view('admin.dashboard');
+        })->name('dashboard');
+        
+        // Resource routes
         Route::resource('users', UserController::class);
         Route::resource('renungan', RenunganController::class);
     });
 });
 
-// Route User
-Route::group(['prefix' => 'user'], function () {
-    Route::get('/login', [UserControllerUser::class, 'login'])->name('user.auth.login');
-    Route::post('/login', [UserControllerUser::class, 'postLogin'])->name('user.auth.postLogin');
-    Route::get('/logout', [UserControllerUser::class, 'logout'])->name('user.logout');
-    Route::get('/register', [UserControllerUser::class, 'register'])->name('user.auth.register');
-    Route::post('/register', [UserControllerUser::class, 'postRegister'])->name('user.auth.postRegister');
-    Route::get('/beranda', [RenunganControllerUser::class, 'beranda'])->name('user.auth.beranda');
-    Route::get('/renungan', [RenunganControllerUser::class, 'index'])->name('user.auth.renungan');
-    Route::get('/catatan_renungan', [CatatanRenunganController::class, 'index'])->name('user.catatan.index');
-    Route::get('/catatan_renungan/create', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');
-    Route::post('/catatan_renungan/store', [CatatanRenunganController::class, 'store'])->name('user.catatan.store');
-
+/*
+|--------------------------------------------------------------------------
+| Member/User Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'member', 'as' => 'member.'], function () {
+    // Guest routes (not authenticated)
+    Route::middleware('guest')->group(function () {
+        Route::get('login', [UserControllerUser::class, 'login'])->name('member.login');
+        Route::post('login', [UserControllerUser::class, 'postLogin'])->name('member.login.post');
+        Route::get('register', [UserControllerUser::class, 'register'])->name('member.register');
+        Route::post('register', [UserControllerUser::class, 'postRegister'])->name('member.register.post');
+    });
+    
+    // Authenticated member routes
+    Route::middleware('auth')->group(function () {
+        Route::get('logout', [UserControllerUser::class, 'logout'])->name('member.logout');
+        Route::get('beranda', [RenunganControllerUser::class, 'beranda'])->name('beranda');
+        Route::get('renungan', [RenunganControllerUser::class, 'index'])->name('renungan');
+        
+        // Catatan Renungan routes
+        Route::group(['prefix' => 'catatan-renungan', 'as' => 'catatan.'], function () {
+            Route::get('/', [CatatanRenunganController::class, 'index'])->name('index');
+            Route::get('create', [CatatanRenunganController::class, 'create'])->name('create');
+            Route::post('store', [CatatanRenunganController::class, 'store'])->name('store');
+            Route::get('{id}', [CatatanRenunganController::class, 'show'])->name('show');
+            Route::get('{id}/edit', [CatatanRenunganController::class, 'edit'])->name('edit');
+            Route::put('{id}', [CatatanRenunganController::class, 'update'])->name('update');
+            Route::delete('{id}', [CatatanRenunganController::class, 'destroy'])->name('destroy');
+        });
+    });
 });

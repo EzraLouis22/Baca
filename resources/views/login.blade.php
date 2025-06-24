@@ -17,12 +17,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b> BACA Perkantas</a>
+    <a href="#"><b>BACA</b> Perkantas</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <img src="{{ asset('picture/logo_baca.png') }}" alt="BACA Perkantas Logo" style="display: block; margin-left: auto; margin-right: auto; width: 100%">
+      <br>
+      <h5 class="login-box-msg" style="text-size: 40px" >Sign in to start your session</h5>
 
       {{-- alert here --}}
       @if (session('error'))
@@ -31,33 +33,22 @@
         </div>
       @endif
 
-      <form action="{{route('admin.auth.login')}}" method="post">
+      <form method="POST" action="{{ route('member.login.post') }}">
         @csrf
-        <div class="input-group mb-3">
-          <input name="email" type="email" class="form-control" placeholder="Email" value="">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control">
         </div>
-        <div class="input-group mb-3">
-          <input name="password" type="password" class="form-control" placeholder="Password" value="">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control">
         </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
-        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <p>Belum punya akun? <a href="{{ route('member.register') }}">Daftar</a></p>
       </form>
     </div>
     <!-- /.login-card-body -->
+
   </div>
 </div>
 <!-- /.login-box -->
