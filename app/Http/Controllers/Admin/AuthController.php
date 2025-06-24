@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\AdminUser;
 
 class AuthController extends Controller
 {
@@ -17,8 +18,14 @@ class AuthController extends Controller
     {
         $credential = $request->only('email', 'password');
 
-        if (Auth::guard('member')->attempt($credential)) {
-            return redirect()->route('user.auth.beranda');
+        if ($request->role == 'member') {
+            if (Auth::guard('member')->attempt($credential)) {
+                return redirect()->route('user.auth.beranda');
+            }
+        } elseif ($request->role == 'admin') {
+            if (Auth::guard('admin')->attempt($credential)) {
+                return redirect()->route('admin.dashboard');
+            }
         }
 
         return redirect()->back()

@@ -43,6 +43,13 @@
             <label for="password">Password</label>
             <input type="password" name="password" id="password" class="form-control">
         </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select name="role" id="role" class="form-control">
+                <option value="member">Member</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
         <p>Belum punya akun? <a href="{{ route('user.auth.register') }}">Daftar</a></p>
       </form>
