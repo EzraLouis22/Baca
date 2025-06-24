@@ -68,12 +68,11 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
-
         'admin_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\AdminUser::class,
+        ],
+        'members' => [
             'driver' => 'eloquent',
             'model' => App\Models\AdminUser::class,
         ],
