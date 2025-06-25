@@ -38,15 +38,21 @@ class CatatanRenunganController extends Controller
         return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
     }
 
-    public function edit(CatatanRenungan $catatanRenungan)
+    public function edit(CatatanRenungan $catatanRenungan, Renungan $renungan)
     {
-        return view('user.catatan.edit', compact('catatanRenungan'));
+        return view('user.catatan.edit')->with('catatanRenungan', $catatanRenungan)->with('renungan', $renungan);
     }
 
-    public function update(UpdateCatatanRequestUser $request, CatatanRenungan $catatanRenungan)
+    public function update(UpdateCatatanRequestUser $request, CatatanRenungan $catatanRenungan, Renungan $renungan)
     {
-        $validate = $request->validated();
-        $catatanRenungan->update($validate);
+        $catatanRenungan->update([
+            'judul' => $request->input('judul'),
+            'date_renungan' => $request->input('date_renungan'),
+            'prinsip' => $request->input('prinsip'),
+            'renungan_id' => $request->input('renungan_id'),
+            'penerapan' => substr($request->input('penerapan'), 0, 255),
+        ]);
+    
         return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
     }
 

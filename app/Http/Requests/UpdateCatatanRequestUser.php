@@ -26,6 +26,7 @@ class UpdateCatatanRequestUser extends FormRequest
             'date_renungan' => 'required|date',
             'prinsip' => 'required|string|max:255',
             'penerapan' => 'required|string|max:255',
+            'renungan_id' => 'required|exists:renungan,id',
         ];
     }
 }
