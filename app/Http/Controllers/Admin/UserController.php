@@ -28,7 +28,6 @@ class UserController extends Controller
     public function dashboard()
     {
         $adminUsers = AdminUser::count();
-        dd($adminUsers);
         return view('dashboard', ['adminUsers' => $adminUsers]);
     }
 
@@ -51,22 +50,17 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit()
     {
-        $user = AdminUser::find($id);
-        return view('admin.users.edit')->with('users', $user);
+
     }
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEditUserRequest $request, User $user)
+    public function update()
     {
-        //update data user
-        $user = AdminUser::find($id);
-        $user->update($request->all());
-        return redirect()->route('users.index');    
-    }
 
+    }
     /**
      * Remove the specified resource from storage.
      */

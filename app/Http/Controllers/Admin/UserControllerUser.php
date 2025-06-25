@@ -73,4 +73,19 @@ class UserControllerUser extends Controller
     
         return redirect()->route('root')->with('success', 'Registrasi berhasil');
     }
+
+    public function edit(AdminUser $adminUsers)
+    {
+        return view('admin.users.edit', compact('adminUsers'));
+    }
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateEditUserRequest $request, AdminUser $adminUsers)
+    {
+        //update data user
+        $validate = $request->validated();
+        $adminUsers->update($validate);
+        return redirect()->route('users.index')->with('success', 'Edit User Successfully');  
+    }
 }
