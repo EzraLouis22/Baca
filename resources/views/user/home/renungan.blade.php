@@ -47,7 +47,7 @@
               <h2 class="text-2xl font-semibold mt-6 mb-2">Doa</h2>
               <p>{{ $renungan->doa }}</p>
               <br>
-              <div>
+              <div class="flex justify-end">
                 <a href="{{ route('user.catatan.create', ['renungan_id' => $renungan->id]) }}" class="btn-tambah">Catat</a>
               </div>
               <style>
@@ -58,6 +58,8 @@
                   border: none;
                   border-radius: 5px;
                   cursor: pointer;
+                  width: 100%;
+                  text-align: center;
                 }
                 
                 .btn-tambah:hover {
