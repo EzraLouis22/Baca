@@ -74,6 +74,11 @@ class UserControllerUser extends Controller
         return redirect()->route('root')->with('success', 'Registrasi berhasil');
     }
 
+    public function profile()
+    {
+        return view('user.profile.index');
+    }
+
     public function edit(AdminUser $adminUsers)
     {
         return view('admin.users.edit', compact('adminUsers'));

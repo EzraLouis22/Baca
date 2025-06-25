@@ -79,7 +79,7 @@
           <li><a href="{{ route('user.auth.beranda') }}" class="hover:text-gray-900">Beranda</a></li>
           <li><a href="{{ route('user.renungans.index') }}" class="hover:text-gray-900">Renungan</a></li>
           <li><a href="{{ route('user.catatan.index') }}" class="hover:text-gray-900">Catatanku</a></li>
-          <li><a href="#" class="hover:text-gray-900">A</a></li>
+          <li><a href="{{ route('user.auth.profile') }}" class="hover:text-gray-900">Profile</a></li>
         </ul>
       </div>
     </nav>
