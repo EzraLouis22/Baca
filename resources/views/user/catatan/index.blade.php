@@ -63,8 +63,6 @@
         <h2><strong>Penerapan</strong></h2>
         <p>{{ $item->penerapan }}</p>
         <br>
-        <button><a href="{{ route('user.catatan.edit', $item->id) }}">Edit</a></button>
-        <button><a href="{{ route('user.catatan.destroy', $item->id) }}">Hapus</button>
     </div>
     @endforeach
   </div>
