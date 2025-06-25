@@ -40,7 +40,10 @@ class CatatanRenunganController extends Controller
 
     public function edit(CatatanRenungan $catatanRenungan, Renungan $renungan)
     {
-        return view('user.catatan.edit')->with('catatanRenungan', $catatanRenungan)->with('renungan', $renungan);
+        return view('user.catatan.edit', [
+            'catatanRenungan' => $catatanRenungan,
+            'renungan' => $renungan
+        ]);
     }
 
     public function update(UpdateCatatanRequestUser $request, CatatanRenungan $catatanRenungan, Renungan $renungan)
@@ -49,12 +52,12 @@ class CatatanRenunganController extends Controller
             'judul' => $request->input('judul'),
             'date_renungan' => $request->input('date_renungan'),
             'prinsip' => $request->input('prinsip'),
-            'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-    
+
         return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
     }
+
 
     public function destroy(CatatanRenungan $catatanRenungan)
     {

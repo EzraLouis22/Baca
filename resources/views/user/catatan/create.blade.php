@@ -4,7 +4,6 @@
 <style>
     body {
       margin: 0;
-      padding: 20px;
       font-family: Arial, sans-serif;
       background-image: url('{{ asset('bg/bg-header.png') }}');
       background-color: rgba(34, 43, 70, 1);
