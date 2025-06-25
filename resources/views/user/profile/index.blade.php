@@ -54,6 +54,19 @@
         margin-bottom: 10px;
         color: #666;
     }
+
+    .logout-button {
+        background-color: #dc3545;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .logout-button:hover {
+        background-color: #c82333;
+    }
 </style>
 <div class="min-h-screen flex flex-col items-center justify-center">
     <div class="profil-container">
@@ -68,6 +81,10 @@
             <p>{{ Auth::user()->email }}</p>
             <h2>Role</h2>
             <p>{{ Auth::user()->role }}</p>
+            <br>
+            <a href="{{ route('user.logout') }}" class="logout-button btn btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
         </div>
     </div>
 </div>

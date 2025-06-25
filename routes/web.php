@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
             return view('dashboard');
         })->name('admin.dashboard');
         Route::resource('users', UserController::class);
+        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::resource('renungan', RenunganController::class);
     });
 });
@@ -47,7 +48,7 @@ Route::group(['prefix' => 'member'], function () {
         Route::get('/catatan-renungan/create', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');
         Route::post('/catatan-renungan', [CatatanRenunganController::class, 'store'])->name('user.catatan.store');
         Route::get('/profile', [UserControllerUser::class, 'profile'])->name('user.auth.profile');
-        Route::get('/logout', 'Auth\LoginController@logout')->name('user.auth.logout');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('user.logout');
     });
 });
 

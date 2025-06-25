@@ -16,6 +16,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,13 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
+                        <td>
+                            <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

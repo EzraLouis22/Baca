@@ -35,6 +35,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
+        Auth::guard('member')->logout();
 
         return redirect()->route('root');
     }
@@ -44,9 +45,9 @@ class AuthController extends Controller
         return view('register');
     }
 
-        public function postRegister(Request $request)
+    public function postRegister(Request $request)
     {
-        if (!$request->name || !$request->email || !$request->password || !$request->role) {
+        if (!$request->name || !$request->email || !$request->password || !$request->role || !$request->image) {
             return back()->withErrors(['Semua field harus diisi']);
         }
     

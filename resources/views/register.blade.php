@@ -57,7 +57,7 @@
           </div>
           <div class="form-group">
               <label for="image">Foto Profil</label>
-              <input type="file" name="image" id="image" class="form-control" accept="image/*" max-size="2048">
+              <input type="file" name="image" id="image" class="form-control" accept="pp/*" max-size="2048">
           </div>
           <button type="submit" class="btn btn-primary">Daftar</button>
           <p>Sudah punya akun? <a href="{{ route('root') }}">Login</a></p>

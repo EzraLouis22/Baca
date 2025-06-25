@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\AdminUser;
 use App\Http\Requests\UpdateEditUserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -66,6 +67,16 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if (Auth::user()->role !== 'admin') {
+            return redirect()->route('users.index')->with('error', 'Anda tidak memiliki hak akses untuk menghapus akun');
+        }
+
+        $adminUser = AdminUser::find($id);
+        if (!$adminUser) {
+            return redirect()->route('users.index')->with('error', 'Akun tidak ditemukan');
+        }
+
+        $adminUser->delete();
+        return redirect()->route('users.index')->with('success', 'Akun berhasil dihapus');
     }
 }
