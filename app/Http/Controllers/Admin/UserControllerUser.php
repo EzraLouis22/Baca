@@ -45,7 +45,7 @@ class UserControllerUser extends Controller
     
     public function postRegister(Request $request)
     {
-        if (!$request->name || !$request->email || !$request->password) {
+        if (!$request->name || !$request->email || !$request->password || !$request->role || !$request->image) {
             return back()->withErrors(['Semua field harus diisi']);
         }
     
