@@ -45,27 +45,33 @@ class UserControllerUser extends Controller
     
     public function postRegister(Request $request)
     {
+        // Validasi input
         $validated = $request->validate([
             'name' => 'required',
-            'email' => 'required|email|unique:admin_users',
-            'password' => 'required',
+            'email' => 'required|email|unique:admin_users,email',
+            'password' => 'required|min:6',
             'role' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $validated['password'] = bcrypt($validated['password']);
+        // Simpan gambar ke folder storage/app/public/images
+        $imagePath = $request->file('image')->store('images', 'public');
 
-        if($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->store('image', 'public');
-            $validated['image'] = $filename;
-        }
+        // Buat user baru
+        $user = AdminUser::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+            'role' => $validated['role'],
+            'image' => $imagePath,
+        ]);
 
-        AdminUser::create($validated);
+        // Login user
+        Auth::guard('member')->login($user); // atau 'admin' sesuai kebutuhan
 
         return redirect()->route('root')->with('success', 'Registrasi berhasil');
     }
+
     public function profile()
     {
         return view('user.profile.index');
