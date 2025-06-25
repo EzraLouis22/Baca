@@ -58,6 +58,7 @@ class UserControllerUser extends Controller
         $user->email = $validated['email'];
         $user->password = bcrypt($validated['password']);
         $user->role = 'member';
+        $user->image = null;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
