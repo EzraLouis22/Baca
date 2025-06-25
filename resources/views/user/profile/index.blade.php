@@ -74,7 +74,7 @@
             <h2>Profil Saya</h2>
         </div>
         <div class="profil-info">
-            <img src="{{ asset('storage/pp/' . Auth::user()->image) }}" alt="Foto Profil" class="foto-profil">
+            <img src="{{ asset('public/pp/' . $user->image) }}" alt="Foto Profil">
             <h2>Nama</h2>
             <p>{{ Auth::user()->name }}</p>
             <h2>Email</h2>
