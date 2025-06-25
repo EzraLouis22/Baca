@@ -47,9 +47,6 @@ Route::group(['prefix' => 'member'], function () {
         Route::get('/catatan-renungan', [CatatanRenunganController::class, 'index'])->name('user.catatan.index');
         Route::get('/catatan-renungan/create', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');
         Route::post('/catatan-renungan', [CatatanRenunganController::class, 'store'])->name('user.catatan.store');
-        Route::post('/catatan-renungan/update', [CatatanRenunganController::class, 'update'])->name('user.catatan.update');
-        Route::get('/catatan-renungan/{id}', [CatatanRenunganController::class, 'edit'])->name('user.catatan.edit');
-        Route::delete('/catatan-renungan/{id}', [CatatanRenunganController::class, 'destroy'])->name('user.catatan.destroy');
         Route::get('/profile', [UserControllerUser::class, 'profile'])->name('user.auth.profile');
         Route::get('/logout', [AuthController::class, 'logout'])->name('user.logout');
     });

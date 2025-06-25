@@ -21,7 +21,7 @@ class CatatanRenungan extends Model
         'renungan_id',
     ];
 
-    public function judulRenungan()
+    public function renungan()
     {
         return $this->belongsTo(Renungan::class, 'renungan_id');
     }
