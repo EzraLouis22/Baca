@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\AdminUser;
+use App\Http\Requests\UpdateEditUserRequest;
 
 class UserController extends Controller
 {
@@ -43,15 +45,26 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $user = AdminUser::find($id);
+        return view('admin.users.edit')->with('users', $user);
+    }
+    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateEditUserRequest $request, User $user)
     {
-        //
+        //update data user
+        $user = AdminUser::find($id);
+        $user->update($request->all());
+        return redirect()->route('users.index');    
     }
 
     /**

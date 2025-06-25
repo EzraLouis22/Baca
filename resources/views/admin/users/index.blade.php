@@ -15,7 +15,8 @@
                     <th>No</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Profil Picture</th>
+                    <th>Role</th>
+                    <th>Aksi</th> 
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +25,11 @@
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td><img alt="thumbnail" src="{{ asset('storage/'.$user->image) }}" width="100" height="100"></td>
+                        <td>{{ $user->role }}</td>
+                        <td>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-danger">Hapus</a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
