@@ -45,32 +45,29 @@ class UserControllerUser extends Controller
     
     public function postRegister(Request $request)
     {
-        if (!$request->name || !$request->email || !$request->password || !$request->role || !$request->image) {
-            return back()->withErrors(['Semua field harus diisi']);
-        }
-    
-        $email = $request->email;
-        $user = AdminUser::where('email', $email)->first();
-    
-        if ($user) {
-            return back()->withErrors(['Email sudah digunakan, silakan gunakan email lain']);
-        }
-    
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admin_users,email',
+            'password' => 'required|string|min:6',
+            'role' => 'required|in:member,admin', // opsional: batasi role
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
         $user = new AdminUser();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = bcrypt($validated['password']);
         $user->role = 'member';
-    
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalName();
+            $filename = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('public/pp', $filename);
             $user->image = $filename;
         }
-    
+
         $user->save();
-    
+
         return redirect()->route('root')->with('success', 'Registrasi berhasil');
     }
 
