@@ -64,7 +64,7 @@ class UserControllerUser extends Controller
     
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = time() . '.' . $file->getClientOriginalName();
             $file->store('public/pp');
             $user->image = $filename;
         }
