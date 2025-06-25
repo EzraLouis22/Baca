@@ -10,13 +10,13 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #f9fbff, #d1e3f8);
     }
 
     .grid {
       display: grid;
+      margin: 75px;
       padding: 20px;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;

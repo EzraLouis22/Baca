@@ -33,7 +33,7 @@ class UserControllerUser extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('member')->logout();
         return redirect()->route('root');
     }
 
