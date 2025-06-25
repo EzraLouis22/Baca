@@ -20,7 +20,7 @@ class UserController extends Controller
                 return $query->where('name', 'like', '%' . $name . '%');
             })
             ->select('id', 'name', 'email', 'password', 'role', 'image')
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate(10);
         return view('admin.users.index', compact('users'));
     }
