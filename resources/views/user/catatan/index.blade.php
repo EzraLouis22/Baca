@@ -62,9 +62,31 @@
         <p>"{{ $item->prinsip }}"</p> <br>
         <h2><strong>Penerapan</strong></h2>
         <p>{{ $item->penerapan }}</p>
+        <br>
+        <button><a href="{{ route('user.catatan.edit', $item->id) }}">Edit</a></button>
+        <button><a href="{{ route('user.catatan.destroy', $item->id) }}">Hapus</button>
     </div>
     @endforeach
   </div>
+  <style>
+    button {
+      background-color: #4CAF50; /* warna hijau */
+      color: #fff; /* warna putih */
+      border: none; /* tidak ada border */
+      padding: 10px 20px; /* jarak antara teks dan border */
+      font-size: 16px; /* ukuran font */
+      cursor: pointer; /* cursor berubah menjadi tangan saat diarahkan */
+    }
+
+    button:hover {
+      background-color: #3e8e41; /* warna hijau tua saat dihover */
+    }
+
+    button a {
+      text-decoration: none; /* tidak ada garis bawah pada teks */
+      color: #fff; /* warna putih */
+    }
+  </style>
 </body>
 </html>
 @endsection

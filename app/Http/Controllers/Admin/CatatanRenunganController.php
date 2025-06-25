@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\CatatanRenungan;
 use App\Models\Renungan;
 use App\Http\Requests\StoreRenunganRequestUser;
+use App\Http\Requests\UpdateCatatanRequestUser;
 
 class CatatanRenunganController extends Controller
 {
@@ -35,6 +36,25 @@ class CatatanRenunganController extends Controller
         ]);
     
         return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
+    }
+
+    public function edit(CatatanRenungan $catatanRenungan)
+    {
+        return view('user.catatan.edit', compact('catatanRenungan'));
+    }
+
+    public function update(UpdateCatatanRequestUser $request, CatatanRenungan $catatanRenungan)
+    {
+        $validate = $request->validated();
+        $catatanRenungan->update($validate);
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
+    }
+
+    public function destroy(CatatanRenungan $catatanRenungan)
+    {
+        $catatanRenungan->delete();
+    
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil dihapus');
     }
 
 }
