@@ -23,6 +23,13 @@ class UserController extends Controller
         return view('admin.users.index', compact('users'));
     }
 
+    public function dashboard()
+    {
+        $adminUsers = AdminUser::count();
+        dd($adminUsers);
+        return view('dashboard', ['adminUsers' => $adminUsers]);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
