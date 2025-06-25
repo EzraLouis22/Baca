@@ -46,32 +46,26 @@ class UserControllerUser extends Controller
     public function postRegister(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:admin_users,email',
-            'password' => 'required|string|min:6',
-            'role' => 'required|in:member,admin', // opsional: batasi role
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'name' => 'required',
+            'email' => 'required|email|unique:admin_users',
+            'password' => 'required',
+            'role' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $user = new AdminUser();
-        $user->name = $validated['name'];
-        $user->email = $validated['email'];
-        $user->password = bcrypt($validated['password']);
-        $user->role = 'member';
-        $user->image = filename($request->file('image'));
+        $validated['password'] = bcrypt($validated['password']);
 
-        if ($request->hasFile('image')) {
+        if($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/pp', $filename);
-            $user->image = $filename;
+            $file->store('image', 'public');
+            $validated['image'] = $filename;
         }
 
-        $user->save();
+        AdminUser::create($validated);
 
         return redirect()->route('root')->with('success', 'Registrasi berhasil');
     }
-
     public function profile()
     {
         return view('user.profile.index');
