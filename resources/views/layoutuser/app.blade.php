@@ -30,6 +30,7 @@
       height: auto;
       position: absolute; /* add this line */
       width: 100%; /* add this line */
+      text-align: center;
     }
     
     nav {

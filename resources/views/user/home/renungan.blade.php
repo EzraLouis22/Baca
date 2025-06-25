@@ -48,7 +48,7 @@
               <p>{{ $renungan->doa }}</p>
               <br>
               <div>
-                <a href="{{ route('user.catatan.create', ['renungan_id' => $renungan->id]) }}" class="btn-tambah">+</a>
+                <a href="{{ route('user.catatan.create', ['renungan_id' => $renungan->id]) }}" class="btn-tambah">Catat</a>
               </div>
               <style>
                 .btn-tambah {
