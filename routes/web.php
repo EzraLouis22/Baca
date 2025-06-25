@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
             return view('dashboard');
         })->name('admin.dashboard');
         Route::resource('users', UserController::class);
-        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+        // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::resource('renungan', RenunganController::class);
     });
 });
