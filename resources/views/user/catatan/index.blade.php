@@ -63,6 +63,18 @@
         <h2><strong>Penerapan</strong></h2>
         <p>{{ $item->penerapan }}</p>
         <br>
+        <div class="justify-center">
+          <div class="flex justify-between">
+            <button class="mr-2">
+              <a href="{{ route('user.catatan.edit', $item->id) }}">Edit</a>
+            </button>
+            <form action="{{ route('user.catatan.destroy', $item->id) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="ml-2">Hapus</button>
+            </form>
+          </div>
+        </div>    
     </div>
     @endforeach
   </div>
@@ -83,6 +95,21 @@
     button a {
       text-decoration: none; /* tidak ada garis bawah pada teks */
       color: #fff; /* warna putih */
+    }
+    .flex {
+      display: flex;
+    }
+
+    .justify-between {
+      justify-content: space-between;
+    }
+
+    .mr-2 {
+      margin-right: 2px;
+    }
+
+    .ml-2 {
+      margin-left: 2px;
     }
   </style>
 </body>
