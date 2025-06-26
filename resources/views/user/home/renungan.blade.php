@@ -1,12 +1,60 @@
 @extends('layoutuser.app')
 
+@section('title', 'Renungan')
+
+<style>
+  @media only screen and (max-width: 768px) {
+    /* Gaya untuk layar handphone */
+    .renungan-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      grid-auto-rows: auto;
+    }
+
+    .renungan-container article {
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);
+      color: #ffffff;
+    }
+  }
+  
+  @media only screen and (min-width: 769px) {
+    /* Gaya untuk layar Laptop dan desktop */
+    .renungan-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+      grid-auto-rows: auto;
+    }
+
+    .renungan-container article {
+      width: 100%;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);
+      color: #ffffff;
+    }
+  }
+</style>
 @section('content')
   <body class="bg-gray-100 font-sans antialiased">
-    <div class="renungan-container grid grid-cols-3 flex-wrap justify-start gap-6 p-4">
+    <div class="renungan-container">
     {{-- Loop through each renungan --}}
       @foreach ($renungan as $renungan)
         <div class="col-lg-6">
-          <article class="max-w-3xl mx-auto px-4 py-8 bg-white rounded shadow-md text-white" style="background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);">
+          <article>
             {{-- Header Renungan --}}
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-2xl font-semibold text-white">Renungan Harian</h2>
