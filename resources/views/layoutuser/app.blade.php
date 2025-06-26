@@ -45,36 +45,79 @@
       transition: all 0.3s ease-in-out;
     }
     @media only screen and (max-width: 768px) {
+      /* Gaya untuk layar handphone */
       nav img {
-        width: 50px;
+        width: 30px; /* Ubah ukuran gambar navigasi menjadi lebih kecil */
+      }
+
+      .logo-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+      }
+      .logo-menu img {
+        margin: 0 auto;
+        width: 80%;
+        transition: all 0.3s ease-in-out;
+      }
+      .logo-menu ul {
+        margin: 10px auto; /* Kurangi margin untuk membuatnya lebih sesuai dengan layar handphone */
+        padding: 5px;
+        transition: all 0.3s ease-in-out;
+        font-size: 20px;
+      }
+      .logo-menu a {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+      }
+      .logo-menu a:hover {
+        color: #ccc;
+        transition: all 0.3s ease-in-out;
       }
     }
-    .logo-menu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0 auto;
-      width: 100%;
-      text-align: center;
-      transition: all 0.3s ease-in-out;
-    }
-    .logo-menu img {
-      margin: 0 auto;
-      transition: all 0.3s ease-in-out;
-    }
-    .logo-menu ul {
-      margin: 20px auto;
-      transition: all 0.3s ease-in-out;
-      font-size: 1.2rem;
-    }
-    .logo-menu a {
-      color: #fff;
-      text-decoration: none;
-      transition: all 0.3s ease-in-out;
-    }
-    .logo-menu a:hover {
-      color: #ccc;
-      transition: all 0.3s ease-in-out;
+    @media only screen and (min-width: 769px) {
+      /* Gaya untuk layar Laptop dan desktop */
+      nav img {
+        width: 100px; /* Ubah ukuran gambar navigasi menjadi lebih besar */
+      }
+
+      .logo-menu {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+        justify-content: center; /* Tambahkan properti ini untuk membuat navigasi lebih ke tengah */
+      }
+      .logo-menu img {
+        margin-left: 0; /* Pindahkan logo ke paling kiri */
+        width: 10%;
+        transition: all 0.3s ease-in-out;
+      }
+      .logo-menu ul {
+        margin: 0 auto;
+        transition: all 0.3s ease-in-out;
+        font-size: 1.5rem;
+        flex-grow: 1;
+        text-align: center;
+        margin-right: 200px; /* Tambahkan properti ini untuk membuat navigasi lebih ke tengah */
+      }
+      .logo-menu a {
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+      }
+      .logo-menu a:hover {
+        color: #ccc;
+        transition: all 0.3s ease-in-out;
+      }
     }
   </style>
 <body class="text-gray-900 leading-relaxed font-sans">
