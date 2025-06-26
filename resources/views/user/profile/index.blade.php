@@ -13,59 +13,120 @@
         font-family: Arial, sans-serif;
     }
 
-    .profil-container {
-        width: 300px;
-        margin: 40px auto;
-        background-color: #fff;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    @media only screen and (max-width: 768px) {
+        /* Gaya untuk layar handphone */
+        .profil-container {
+            width: 300px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profil-header {
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .foto-profil {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 3px solid #333;
+        }
+
+        .profil-info {
+            margin-top: 20px;
+        }
+
+        .profil-info h2 {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .profil-info p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .logout-button {
+            background-color: #dc3545;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
     }
 
-    .profil-header {
-        text-align: center;
-        margin-bottom: 20px;
-        background-color: #333;
-        color: #fff;
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
-    }
+    @media only screen and (min-width: 769px) {
+        /* Gaya untuk layar laptop */
+        .profil-container {
+            width: 500px; /* Lebar container yang lebih besar */
+            margin: 60px auto; /* Margin yang lebih besar untuk memberikan ruang yang lebih luas */
+            background-color: #fff;
+            padding: 30px; /* Padding yang lebih besar untuk memberikan ruang yang lebih luas */
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .foto-profil {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        margin: 0 auto;
-        border: 3px solid #333;
-    }
+        .profil-header {
+            text-align: center;
+            margin-bottom: 30px; /* Margin yang lebih besar untuk memberikan ruang yang lebih luas */
+            background-color: #333;
+            color: #fff;
+            padding: 15px; /* Padding yang lebih besar untuk memberikan ruang yang lebih luas */
+            border-radius: 10px 10px 0 0;
+        }
 
-    .profil-info {
-        margin-top: 20px;
-    }
+        .foto-profil {
+            width: 180px; /* Lebar foto profil yang lebih besar */
+            height: 180px; /* Tinggi foto profil yang lebih besar */
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 3px solid #333;
+        }
 
-    .profil-info h2 {
-        font-weight: bold;
-        margin-bottom: 5px;
-        color: #333;
-    }
+        .profil-info {
+            margin-top: 30px; /* Margin yang lebih besar untuk memberikan ruang yang lebih luas */
+        }
 
-    .profil-info p {
-        margin-bottom: 10px;
-        color: #666;
-    }
+        .profil-info h2 {
+            font-weight: bold;
+            margin-bottom: 10px; /* Margin yang lebih besar untuk memberikan ruang yang lebih luas */
+            color: #333;
+        }
 
-    .logout-button {
-        background-color: #dc3545;
-        color: #ffffff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+        .profil-info p {
+            margin-bottom: 15px; /* Margin yang lebih besar untuk memberikan ruang yang lebih luas */
+            color: #666;
+        }
 
-    .logout-button:hover {
-        background-color: #c82333;
+        .logout-button {
+            background-color: #dc3545;
+            color: #ffffff;
+            padding: 15px 30px; /* Padding yang lebih besar untuk memberikan ruang yang lebih luas */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
     }
 </style>
 <div class="min-h-screen flex flex-col items-center justify-center">
