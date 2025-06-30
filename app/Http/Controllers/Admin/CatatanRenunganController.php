@@ -8,6 +8,7 @@ use App\Models\CatatanRenungan;
 use App\Models\Renungan;
 use App\Http\Requests\StoreRenunganRequestUser;
 use App\Http\Requests\UpdateCatatanRequestUser;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CatatanRenunganController extends Controller
 {
@@ -53,6 +54,8 @@ class CatatanRenunganController extends Controller
         CatatanRenungan::where('renungan_id', $renungan->id)->update([
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
+
+        Alert::success('Berhasil', 'Catatan Renungan berhasil diperbarui');
         return redirect()->route('user.catatan.index');
     }
 
