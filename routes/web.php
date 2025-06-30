@@ -23,7 +23,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 Route::get('/', function () {
     Alert::success('Welcome Anak-Anak Allah', 'Selamat Datang di BACA');
-    Alert::error('Error Title', 'Error Message');
     return view('login');
 })->name('root');
 
