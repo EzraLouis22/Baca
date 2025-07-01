@@ -44,7 +44,7 @@ class CatatanRenunganController extends Controller
             'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        return redirect()->route('user.catatan.index');
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil ditambahkan');
     }
 
     public function edit(CatatanRenungan $catatanRenungan)
@@ -71,8 +71,7 @@ class CatatanRenunganController extends Controller
             'prinsip' => $request->input('prinsip'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Berhasil', 'Catatan Renungan berhasil diubah');
-        return redirect()->route('user.catatan.index');
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
     }
 
     public function destroy(CatatanRenungan $catatanRenungan)
