@@ -32,6 +32,7 @@ class CatatanRenunganController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'date_renungan' => 'required|date',
+            'renungan_id' => 'required',
             'prinsip' => 'required|string|max:255',
             'penerapan' => 'required|string|max:255',
         ]);
@@ -57,6 +58,9 @@ class CatatanRenunganController extends Controller
     public function update(UpdateCatatanRequestUser $request, CatatanRenungan $catatanRenungan)
     {
         $request->validate([
+            'judul' => 'required|string|max:255',
+            'date_renungan' => 'required|date',
+            'renungan_id' => 'required',
             'prinsip' => 'required|string|max:255',
             'penerapan' => 'required|string|max:255',
         ]);
