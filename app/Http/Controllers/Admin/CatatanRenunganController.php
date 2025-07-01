@@ -44,7 +44,7 @@ class CatatanRenunganController extends Controller
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
     
-        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
+        return redirect('catatan-renungan')->route('user.catatan.index')->with('success', 'Catatan Renungan baru berhasil dibuat');
     }
 
     public function edit(CatatanRenungan $catatanRenungan)
