@@ -22,7 +22,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function () {
-    Alert::success('Welcome Anak-Anak Allah', 'Selamat Datang di BACA');
     return view('login');
 })->name('root');
 
@@ -45,7 +44,10 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::group(['prefix' => 'member'], function () {
     Route::group(['middleware' => 'auth:member'], function () {
-        Route::get('/beranda', [RenunganControllerUser::class, 'beranda'])->name('user.auth.beranda');
+        Route::get('/beranda', function () {
+            Alert::alert('Welcome to BACA', 'You are logged in!', 'success');
+            return app()->make(RenunganControllerUser::class)->beranda();
+        })->name('user.auth.beranda');
         Route::get('/renungans', [RenunganControllerUser::class, 'index'])->name('user.renungans.index');
         Route::get('/catatan-renungan', [CatatanRenunganController::class, 'index'])->name('user.catatan.index');
         Route::get('/catatan-renungan/create', [CatatanRenunganController::class, 'create'])->name('user.catatan.create');

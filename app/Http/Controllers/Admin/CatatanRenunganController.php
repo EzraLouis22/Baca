@@ -28,6 +28,14 @@ class CatatanRenunganController extends Controller
     // di CatatanRenunganController.php
     public function store(StoreRenunganRequestUser $request)
     {
+        // Your code here to store the catatanRenungan
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'date_renungan' => 'required|date',
+            'prinsip' => 'required|string|max:255',
+            'penerapan' => 'required|string|max:255',
+        ]);
+
         CatatanRenungan::create([
             'judul' => $request->input('judul'),
             'date_renungan' => $request->input('date_renungan'),
@@ -48,15 +56,18 @@ class CatatanRenunganController extends Controller
 
     public function update(UpdateCatatanRequestUser $request, CatatanRenungan $catatanRenungan)
     {
+        $request->validate([
+            'prinsip' => 'required|string|max:255',
+            'penerapan' => 'required|string|max:255',
+        ]);
+        
         // Your code here to update the catatanRenungan
         $renungan = Renungan::find($catatanRenungan->renungan_id);
         $catatanRenungan->update($request->all());
         CatatanRenungan::where('renungan_id', $renungan->id)->update([
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-
-        Alert::success('Berhasil', 'Catatan Renungan berhasil diperbarui');
-        return redirect()->route('user.catatan.index');
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
     }
 
     public function destroy(CatatanRenungan $catatanRenungan)

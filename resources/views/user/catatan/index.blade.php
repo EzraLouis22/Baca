@@ -73,7 +73,8 @@
               <button type="submit" class="ml-2">Hapus</button>
             </form>
           </div>
-        </div>    
+        </div>
+        @include('sweetalert::alert')  
     </div>
     @endforeach
   </div>
