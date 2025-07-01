@@ -73,11 +73,11 @@
               <button type="submit" class="ml-2">Hapus</button>
             </form>
           </div>
-        </div>
-        @include('sweetalert::alert')  
+        </div>  
     </div>
     @endforeach
   </div>
+  @include('sweetalert::alert')
   <style>
     button {
       background-color: #4CAF50; /* warna hijau */
