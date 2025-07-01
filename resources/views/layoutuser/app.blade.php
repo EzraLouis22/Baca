@@ -201,12 +201,11 @@
   <main>
     @yield('content')
   </main>
-
+    @include('sweetalert::alert')
   <footer class="shadow text-white" style="background-color: rgba(130, 114, 113, 1);">
     <div class="max-w-4xl mx-auto px-4 py-6 text-sm">
       &copy; {{ date('Y') }} BACA - Perkantas Semarang
     </div>
   </footer>
-  @include('sweetalert::alert')
 </body>
 </html>
