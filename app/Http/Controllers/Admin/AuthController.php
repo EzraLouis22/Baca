@@ -21,6 +21,7 @@ class AuthController extends Controller
 
         if ($request->role == 'member') {
             if (Auth::guard('member')->attempt($credential)) {
+                // Pindahkan Alert::success ke sini setelah berhasil login
                 Alert::success('Login Berhasil', 'Selamat datang!');
                 return redirect()->route('user.auth.beranda');
             }
@@ -30,6 +31,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             }
         }
+
 
         Alert::error('Gagal Login', 'Email, password, atau role tidak sesuai.');
         return redirect()->back();
