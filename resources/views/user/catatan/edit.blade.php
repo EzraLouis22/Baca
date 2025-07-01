@@ -16,7 +16,7 @@
     <article class="max-w-3xl mx-auto px-4 py-8 bg-white rounded shadow-md text-white" style="background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);">
         <h1 class="text-2xl font-bold mb-4">Edit Catatan Renungan</h1>
         <p class="mb-4">Ubahlah catatan Anda berdasarkan prinsip dan penerapan yang telah Anda catat.</p>
-        <form action="{{ route('user.catatan.update', $catatanRenungan, $catatanRenungan->renungan) }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md">
+        <form action="{{ route('user.catatan.update', $catatanRenungan->id) }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md">
             @csrf
             @method('PUT')
             <div class="mb-3">
@@ -35,9 +35,16 @@
                 <label for="penerapan" class="form-label text-gray">Pilih Penerapan</label>
                 <select class="form-control text-black border-gray-300 rounded-lg p-2" id="penerapan" name="penerapan" required>
                     <option value="">-- Pilih Penerapan --</option>
-                    <option value="{{ $catatanRenungan->renungan->penerapan1 }}">{{ $catatanRenungan->renungan->penerapan1 }}</option>
-                    <option value="{{ $catatanRenungan->renungan->penerapan2 }}">{{ $catatanRenungan->renungan->penerapan2 }}</option>
-                    <option value="{{ $catatanRenungan->renungan->penerapan3 }}">{{ $catatanRenungan->renungan->penerapan3 }}</option>
+                    <option value="{{ $catatanRenungan->renungan->penerapan1 }}" {{ old('penerapan', $catatanRenungan->penerapan) == $catatanRenungan->renungan->penerapan1 ? 'selected' : '' }}>
+                        {{ $catatanRenungan->renungan->penerapan1 }}
+                    </option>
+                    <option value="{{ $catatanRenungan->renungan->penerapan2 }}" {{ old('penerapan', $catatanRenungan->penerapan) == $catatanRenungan->renungan->penerapan2 ? 'selected' : '' }}>
+                        {{ $catatanRenungan->renungan->penerapan2 }}
+                    </option>
+                    <option value="{{ $catatanRenungan->renungan->penerapan3 }}" {{ old('penerapan', $catatanRenungan->penerapan) == $catatanRenungan->renungan->penerapan3 ? 'selected' : '' }}>
+                        {{ $catatanRenungan->renungan->penerapan3 }}
+                    </option>
+
                 </select>
             </div>
             <input type="hidden" name="renungan_id" value="{{ $catatanRenungan->renungan_id }}">
