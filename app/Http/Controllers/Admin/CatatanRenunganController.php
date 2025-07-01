@@ -8,7 +8,6 @@ use App\Models\CatatanRenungan;
 use App\Models\Renungan;
 use App\Http\Requests\StoreRenunganRequestUser;
 use App\Http\Requests\UpdateCatatanRequestUser;
-use Alert;
 
 class CatatanRenunganController extends Controller
 {
@@ -45,7 +44,6 @@ class CatatanRenunganController extends Controller
             'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Berhasil', 'Catatan Renungan berhasil ditambahkan.');
         return redirect()->route('user.catatan.index');
     }
 
@@ -73,7 +71,6 @@ class CatatanRenunganController extends Controller
             'prinsip' => $request->input('prinsip'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Berhasil', 'Catatan Renungan berhasil diubah.');
         return redirect()->route('user.catatan.index');
     }
 
@@ -81,7 +78,6 @@ class CatatanRenunganController extends Controller
     {
         // Your code here to delete the catatanRenungan
         $catatanRenungan->delete();
-        Alert::success('Berhasil', 'Catatan Renungan berhasil dihapus.');
         return redirect()->route('user.catatan.index');
     }
 
