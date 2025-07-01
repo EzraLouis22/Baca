@@ -71,7 +71,8 @@ class CatatanRenunganController extends Controller
             'prinsip' => $request->input('prinsip'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
+        Alert::success('Berhasil', 'Catatan Renungan berhasil diubah');
+        return redirect()->route('user.catatan.index');
     }
 
     public function destroy(CatatanRenungan $catatanRenungan)
