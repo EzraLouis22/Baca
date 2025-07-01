@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdminUser;
-use RealRashid\SweetAlert\Facades\Alert;
+use Alert;
 
 class AuthController extends Controller
 {
@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if ($request->role == 'member') {
             if (Auth::guard('member')->attempt($credential)) {
-                Alert::toast('Login Berhasil! Selamat datang.', 'success');
+                Alert::success('Login Berhasil', 'Selamat datang!');
                 return redirect()->route('user.auth.beranda');
             }
         } elseif ($request->role == 'admin') {
@@ -45,6 +45,7 @@ class AuthController extends Controller
 
     public function register()
     {
+
         return view('register');
     }
 
@@ -74,11 +75,8 @@ class AuthController extends Controller
             $file->store('public/pp');
             $user->image = $filename;
         }
-    
         $user->save();
-        
-        Alert::success('Berhasil', 'Akun berhasil dibuat, silakan login.');
-        return redirect()->route('member.login');
+        return back();
     }
 
 }

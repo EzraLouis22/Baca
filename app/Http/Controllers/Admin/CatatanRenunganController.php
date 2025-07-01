@@ -8,7 +8,6 @@ use App\Models\CatatanRenungan;
 use App\Models\Renungan;
 use App\Http\Requests\StoreRenunganRequestUser;
 use App\Http\Requests\UpdateCatatanRequestUser;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class CatatanRenunganController extends Controller
 {
