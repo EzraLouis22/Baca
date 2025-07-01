@@ -44,7 +44,6 @@ class CatatanRenunganController extends Controller
             'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Berhasil', 'Catatan berhasil ditambahkan');
         return redirect()->route('user.catatan.index');
     }
 
@@ -64,23 +63,22 @@ class CatatanRenunganController extends Controller
             'prinsip' => 'required|string|max:255',
             'penerapan' => 'required|string|max:255',
         ]);
-        
-        // Your code here to update the catatanRenungan
-        $renungan = Renungan::find($catatanRenungan->renungan_id);
-        $catatanRenungan->update($request->all());
-        CatatanRenungan::where('renungan_id', $renungan->id)->update([
+
+        $catatanRenungan->update([
+            'judul' => $request->input('judul'),
+            'date_renungan' => $request->input('date_renungan'),
+            'renungan_id' => $request->input('renungan_id'),
+            'prinsip' => $request->input('prinsip'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Berhasil', 'Catatan berhasil diperbarui');
-        return redirect()->route('user.catatan.index');;
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil diperbarui');
     }
 
     public function destroy(CatatanRenungan $catatanRenungan)
     {
         // Your code here to delete the catatanRenungan
         $catatanRenungan->delete();
-        Alert::success('Berhasil', 'Catatan berhasil dihapus');
-        return redirect()->route('user.catatan.index');
+        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil dihapus');
     }
 
 }
