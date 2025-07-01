@@ -25,8 +25,6 @@
       <img src="{{ asset('picture/logo_baca.png') }}" alt="BACA Perkantas Logo" style="display: block; margin-left: auto; margin-right: auto; width: 100%">
       <br>
       <h5 class="login-box-msg" style="text-size: 40px" >Sign in to start your session</h5>
-      <!-- SweetAlert -->
-      @include('sweetalert::alert')
 
       <form method="POST" action="{{ route('admin.auth.login') }}" enctype="multipart/form-data">
         @csrf
