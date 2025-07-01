@@ -43,8 +43,7 @@ class CatatanRenunganController extends Controller
             'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-
-        Alert::success('Berhasil', 'Catatan Renungan berhasil ditambahkan');
+        Alert::success('Berhasil', 'Catatan berhasil ditambahkan');
         return redirect()->route('user.catatan.index');
     }
 
@@ -68,15 +67,15 @@ class CatatanRenunganController extends Controller
         CatatanRenungan::where('renungan_id', $renungan->id)->update([
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Berhasil', 'Catatan Renungan berhasil diubah');
-        return redirect()->route('user.catatan.index');
+        Alert::success('Berhasil', 'Catatan berhasil diperbarui');
+        return redirect()->route('user.catatan.index');;
     }
 
     public function destroy(CatatanRenungan $catatanRenungan)
     {
         // Your code here to delete the catatanRenungan
         $catatanRenungan->delete();
-        Alert::success('Berhasil', 'Catatan Renungan berhasil dihapus');
+        Alert::success('Berhasil', 'Catatan berhasil dihapus');
         return redirect()->route('user.catatan.index');
     }
 

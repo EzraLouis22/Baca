@@ -67,10 +67,10 @@
             <button class="mr-2">
               <a href="{{ route('user.catatan.edit', $item->id) }}">Edit</a>
             </button>
-            <form action="{{ route('user.catatan.destroy', $item->id) }}" method="POST">
+            <form action="{{ route('user.catatan.destroy', $item->id) }}" method="POST" class="d-inline" id="deleteForm{{ $item->id }}">
               @csrf
               @method('DELETE')
-              <button type="submit" class="ml-2">Hapus</button>
+              <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $item->id }})">Hapus</button>
             </form>
           </div>
         </div>  
@@ -112,6 +112,26 @@
       margin-left: 2px;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: "Catatan ini akan dihapus secara permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm' + id).submit();
+            }
+        })
+    }
+  </script>
+
 </body>
 </html>
 @endsection
