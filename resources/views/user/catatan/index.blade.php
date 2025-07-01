@@ -77,7 +77,6 @@
     </div>
     @endforeach
   </div>
-  @include('sweetalert::alert')
   <style>
     button {
       background-color: #4CAF50; /* warna hijau */
