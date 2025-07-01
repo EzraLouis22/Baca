@@ -21,23 +21,26 @@ class AuthController extends Controller
 
         if ($request->role == 'member') {
             if (Auth::guard('member')->attempt($credential)) {
+                Alert::success('Login Berhasil', 'Selamat datang!');
                 return redirect()->route('user.auth.beranda');
             }
         } elseif ($request->role == 'admin') {
             if (Auth::guard('admin')->attempt($credential)) {
+                Alert::success('Login Berhasil', 'Selamat datang kembali!');
                 return redirect()->route('admin.dashboard');
             }
         }
 
-        return redirect()->back()
-                ->with('error', 'Invalid Credential');
+        Alert::error('Gagal Login', 'Email, password, atau role tidak sesuai.');
+        return redirect()->back();
+
     }
 
     public function logout()
     {
         Auth::guard('admin')->logout();
         Auth::guard('member')->logout();
-
+        Alert::success('Logout Berhasil', 'Anda telah berhasil logout.');
         return redirect()->route('root');
     }
 
@@ -49,14 +52,16 @@ class AuthController extends Controller
     public function postRegister(Request $request)
     {
         if (!$request->name || !$request->email || !$request->password || !$request->role || !$request->image) {
-            return back()->withErrors(['Semua field harus diisi']);
+            Alert::error('Gagal', 'Semua field harus diisi.');
+            return back();
         }
     
         $email = $request->email;
         $user = User::where('email', $email)->first();
     
         if ($user) {
-            return back()->withErrors(['Email sudah digunakan, silakan gunakan email lain']);
+            Alert::error('Gagal', 'Email sudah digunakan, silakan gunakan email lain.');
+            return back();
         }
     
         $user = new User();
@@ -72,7 +77,8 @@ class AuthController extends Controller
         }
     
         $user->save();
-    
+        
+        Alert::success('Berhasil', 'Akun berhasil dibuat, silakan login.');
         return redirect()->route('member.login');
     }
 
