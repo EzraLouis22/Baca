@@ -28,7 +28,7 @@
 
     footer {
       height: auto;
-      position: absolute; /* add this line */
+      position: relative; /* add this line */
       width: 100%; /* add this line */
       text-align: center;
     }
@@ -200,7 +200,6 @@
   </header>
   <main>
     @yield('content')
-    @include('sweetalert::alert')
   </main>
 
   <footer class="shadow text-white" style="background-color: rgba(130, 114, 113, 1);">
@@ -208,6 +207,6 @@
       &copy; {{ date('Y') }} BACA - Perkantas Semarang
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  @include('sweetalert::alert')
 </body>
 </html>
