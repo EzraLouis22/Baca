@@ -200,6 +200,7 @@
   </header>
   <main>
     @yield('content')
+    @include('sweetalert::alert')
   </main>
 
   <footer class="shadow text-white" style="background-color: rgba(130, 114, 113, 1);">

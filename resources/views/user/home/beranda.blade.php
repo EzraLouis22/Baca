@@ -49,7 +49,6 @@
               <div class="flex justify-end">
                 <a href="{{ route('user.catatan.create', ['renungan_id' => $renungan->id]) }}" class="btn-tambah">Catat</a>
               </div>
-              @include('sweetalert::alert')
               <style>
                 .btn-tambah {
                   background-color: #4CAF50;
