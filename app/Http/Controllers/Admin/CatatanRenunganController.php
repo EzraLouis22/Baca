@@ -70,6 +70,7 @@ class CatatanRenunganController extends Controller
             'prinsip' => $request->input('prinsip'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
+        Alert::success('Success Title', 'Success Message');
         return redirect()->route('user.catatan.index');
     }
 
