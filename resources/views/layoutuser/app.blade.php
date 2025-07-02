@@ -6,7 +6,6 @@
   <title>{{ $title ?? 'Renungan' }}</title>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
     body {
@@ -149,6 +148,7 @@
       }
     }
   </style>
+@include('sweetalert::alert')
 <body class="text-gray-900 leading-relaxed font-sans">
   <header class="shadow text-white">
     <nav class="px-4 py-2 shadow">
@@ -200,7 +200,6 @@
   </header>
   <main>
     @yield('content')
-    @include('sweetalert::alert')
   </main>
   <footer class="shadow text-white" style="background-color: rgba(130, 114, 113, 1);">
     <div class="max-w-4xl mx-auto px-4 py-6 text-sm">
@@ -208,5 +207,7 @@
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @stack('scripts')
+  @include('sweetalert::alert')
 </body>
 </html>
