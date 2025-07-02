@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\RenunganController;
 use App\Http\Controllers\Admin\UserControllerUser;
 use App\Http\Controllers\Admin\RenunganControllerUser;
 use App\Http\Controllers\Admin\CatatanRenunganController;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 /*
