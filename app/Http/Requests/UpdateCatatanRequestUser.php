@@ -24,6 +24,7 @@ class UpdateCatatanRequestUser extends FormRequest
         return [
             'judul' => 'required|string|max:255',
             'date_renungan' => 'required|date',
+            'renungan_id' => 'required',
             'prinsip' => 'required|string|max:255',
             'penerapan' => 'required|string|max:255',
         ];
