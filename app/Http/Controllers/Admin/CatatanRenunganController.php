@@ -22,7 +22,7 @@ class CatatanRenunganController extends Controller
     {
         $renungan_id = $request->input('renungan_id');
         $renungan = Renungan::find($renungan_id);
-        return view('user.catatan.create', compact('renungan'));
+        return view('user.catatan.create', compact('renungan'))->with('success', 'Catatan Renungan berhasil dibuat');
     }
 
     // di CatatanRenunganController.php
@@ -71,7 +71,7 @@ class CatatanRenunganController extends Controller
             'prinsip' => $request->input('prinsip'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        Alert::success('Success Title', 'Success Message');
+        Alert::success('Success', 'Catatan Renungan berhasil diupdate');
         return redirect()->route('user.catatan.index');
     }
 
