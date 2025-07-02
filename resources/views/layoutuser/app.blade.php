@@ -148,7 +148,6 @@
       }
     }
   </style>
-@include('sweetalert::alert')
 <body class="text-gray-900 leading-relaxed font-sans">
   <header class="shadow text-white">
     <nav class="px-4 py-2 shadow">
@@ -200,7 +199,7 @@
   </header>
   <main>
     @yield('content')
-    @include('sweetalert::alert')
+    @include('sweetalert::Alert')
   </main>
   <footer class="shadow text-white" style="background-color: rgba(130, 114, 113, 1);">
     <div class="max-w-4xl mx-auto px-4 py-6 text-sm">

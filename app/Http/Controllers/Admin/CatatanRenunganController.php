@@ -22,7 +22,7 @@ class CatatanRenunganController extends Controller
     {
         $renungan_id = $request->input('renungan_id');
         $renungan = Renungan::find($renungan_id);
-        return view('user.catatan.create', compact('renungan'))->with('success', 'Catatan Renungan berhasil dibuat');
+        return view('user.catatan.create', compact('renungan'));
     }
 
     // di CatatanRenunganController.php
@@ -81,6 +81,7 @@ class CatatanRenunganController extends Controller
     {
         // Your code here to delete the catatanRenungan
         $catatanRenungan->delete();
+        Alert::success('Success', 'Catatan Renungan berhasil dihapus');
         return redirect()->route('user.catatan.index');
     }
 
