@@ -20,7 +20,7 @@ class AuthController extends Controller
 
         if ($request->role == 'member') {
             if (Auth::guard('member')->attempt($credential)) {
-                return redirect()->route('user.auth.beranda');
+                return redirect()->route('user.auth.beranda')->with('success', 'Login Berhasil');
             }
         } elseif ($request->role == 'admin') {
             if (Auth::guard('admin')->attempt($credential)) {
@@ -31,11 +31,12 @@ class AuthController extends Controller
 
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
         Auth::guard('member')->logout();
-        return redirect()->route('root');
+
+        return redirect()->route('root')->with('success', 'Berhasil logout!');
     }
 
     public function register()

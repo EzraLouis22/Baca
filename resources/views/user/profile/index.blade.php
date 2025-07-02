@@ -143,10 +143,38 @@
             <h2>Role</h2>
             <p>{{ Auth::user()->role }}</p>
             <br>
-            <a href="{{ route('user.logout') }}" class="logout-button btn btn-danger">
+            <a href="{{ route('user.logout') }}" onclick="return confirmLogout()" class="logout-button btn btn-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </div>
     </div>
 </div>
+<script>
+async function confirmLogout() {
+    const result = await Swal.fire({
+        title: 'Konfirmasi',
+        text: 'Apakah Anda yakin ingin logout?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Logout',
+        cancelButtonText: 'Batal'
+    });
+
+    if (result.isConfirmed) {
+        // Tampilkan popup success setelah popup konfirmasi tertutup
+        await Swal.fire({
+            title: 'Berhasil!',
+            text: 'Anda berhasil logout.',
+            icon: 'success',
+            timer: 5000,
+            showConfirmButton: false
+        });
+
+        // Redirect setelah popup sukses selesai
+        window.location.href = "{{ route('user.logout') }}";
+    }
+
+    return false; // Mencegah link berjalan langsung
+}
+</script>
 @endsection

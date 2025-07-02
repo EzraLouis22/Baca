@@ -26,13 +26,6 @@
       <br>
       <h5 class="login-box-msg" style="text-size: 40px" >Sign in to start your session</h5>
 
-      {{-- alert here --}}
-      @if (session('error'))
-        <div class="alert alert-danger">
-            {{session('error')}}
-        </div>
-      @endif
-
       <!-- resources/views/user/register.blade.php -->
       
       <form method="POST" action="{{ route('user.auth.postRegister') }}" enctype="multipart/form-data">
@@ -59,7 +52,7 @@
               <label for="image">Foto Profil</label>
               <input type="file" name="image" id="image" class="form-control" accept="image/*">
           </div>
-          <button type="submit" class="btn btn-primary">Daftar</button>
+          <button type="submit" class="btn btn-primary" id="registerButton">Daftar</button>
           <p>Sudah punya akun? <a href="{{ route('root') }}">Login</a></p>
       </form>
     </div>
@@ -68,6 +61,39 @@
 </div>
 <!-- /.login-box -->
 
+<script>
+document.getElementById('registerButton').addEventListener('click', async function(event) {
+    event.preventDefault(); // cegah submit langsung
+
+    const form = event.target.closest('form');
+
+    // Loading popup
+    await Swal.fire({
+        title: 'Registering...',
+        text: 'Please wait while we register you.',
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    // Success popup setelah loading
+    await Swal.fire({
+        title: 'Berhasil Terdaftar!',
+        text: 'Akun Anda berhasil didaftarkan.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false
+    });
+
+    // Submit form setelah semua popup selesai
+    form.submit();
+});
+</script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- jQuery -->
 <script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->

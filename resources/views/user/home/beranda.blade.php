@@ -70,5 +70,15 @@
         </div>
       @endforeach
     </div>
+    <script>
+      @if(session('success'))
+          Swal.fire({
+              icon: 'success',
+              title: '{{ session("success") }}',
+              showConfirmButton: false,
+              timer: 2000
+          });
+      @endif
+    </script>
   </body>
 @endsection

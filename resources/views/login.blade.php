@@ -43,16 +43,37 @@
                 <option value="admin">Admin</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
+        <button type="submit" class="btn btn-primary btn-block" id="loginButton">Login</button>
         <p>Belum punya akun? <a href="{{ route('user.auth.register') }}">Daftar</a></p>
       </form>
     </div>
     <!-- /.login-card-body -->
+<script>
+document.getElementById('loginButton').addEventListener('click', function(event) {
+    event.preventDefault(); // cegah submit langsung
 
+    Swal.fire({
+        title: 'Logging in...',
+        text: 'Please wait while we log you in.',
+        timer: 1500,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading();
+        },
+        willClose: () => {
+            event.target.closest('form').submit(); // submit form setelah timer habis
+        }
+    });
+});
+</script>
+    
   </div>
 </div>
 <!-- /.login-box -->
 
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- jQuery -->
 <script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
