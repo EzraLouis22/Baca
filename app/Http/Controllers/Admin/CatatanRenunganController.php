@@ -44,7 +44,8 @@ class CatatanRenunganController extends Controller
             'renungan_id' => $request->input('renungan_id'),
             'penerapan' => substr($request->input('penerapan'), 0, 255),
         ]);
-        return redirect()->route('user.catatan.index')->with('success', 'Catatan Renungan berhasil dibuat');
+        Alert::success('Success', 'Data berhasil disimpan');
+        return redirect()->route('user.catatan.index');
     }
 
     public function edit(CatatanRenungan $catatanRenungan)

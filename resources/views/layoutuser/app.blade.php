@@ -200,7 +200,6 @@
   </header>
   <main>
     @yield('content')
-    @stack('scripts')
     @include('sweetalert::alert')
   </main>
   <footer class="shadow text-white" style="background-color: rgba(130, 114, 113, 1);">
@@ -208,6 +207,5 @@
       &copy; {{ date('Y') }} BACA - Perkantas Semarang
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

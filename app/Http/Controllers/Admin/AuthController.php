@@ -39,6 +39,7 @@ class AuthController extends Controller
     {
         Auth::guard('admin')->logout();
         Auth::guard('member')->logout();
+        Alert::success('Success', 'Logout Berhasil');
         return redirect()->route('root');
     }
 
