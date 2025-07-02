@@ -51,7 +51,7 @@ class RenunganController extends Controller
         ]);
 
         // Redirect ke halaman index renungan dengan pesan sukses
-        return redirect()->route('renungan.index')->with('success', 'Renungan baru berhasil dibuat');
+        return redirect()->route('renungan.index');
     }
 
     /**
@@ -75,7 +75,7 @@ class RenunganController extends Controller
     {
         $validate = $request->validated();
         $renungan->update($validate);
-        return redirect()->route('renungan.index')->with('success', 'Edit Renungan Successfully');
+        return redirect()->route('renungan.index');
     }
 
     /**
@@ -84,6 +84,6 @@ class RenunganController extends Controller
     public function destroy(Renungan $renungan)
     {
         $renungan->delete();
-        return redirect()->route('renungan.index')->with('success', 'Delete Renungan Successfully');
+        return redirect()->route('renungan.index');
     }
 }

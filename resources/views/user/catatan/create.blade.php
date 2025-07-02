@@ -16,7 +16,7 @@
     <article class="max-w-3xl mx-auto px-4 py-8 bg-white rounded shadow-md text-white" style="background: linear-gradient(to bottom, #827271 0%, #46445C 50%,  #827271 100%);">
         <h1 class="text-2xl font-bold mb-4">Catat Renungan</h1>
         <p class="mb-4">Isi catatan Anda berdasarkan renungan yang telah Anda baca.</p>
-            <form action="{{ route('user.catatan.store') }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md">
+            <form action="{{ route('user.catatan.store') }}" method="POST" class="bg-gray-600 p-4 rounded shadow-md" id="form-create">
             @csrf
             <div class="mb-3">
                 <label for="judul" class="form-label text-gray">Judul Renungan</label>
@@ -43,12 +43,41 @@
             
             <input type="hidden" name="renungan_id" value="{{ $renungan->id }}">
             
-            <button type="submit" class="btn btn-primary rounded-lg p-2 text-white">Simpan</button>
+            <button type="submit" class="btn btn-primary rounded-lg p-2 text-white" onclick="return confirmCreate()">Simpan</button>
             </form>
             <div class="mt-6">
                 <a href="{{ route('user.catatan.index') }}" class="btn btn-secondary">Kembali ke Daftar Catatan</a>
             </div>
         </article>
+        <script>
+    function confirmCreate() {
+        Swal.fire({
+            title: 'Konfirmasi',
+            text: 'Apakah Anda yakin ingin menyimpan catatan ini?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Simpan',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.value) {
+                // Jika pengguna mengklik Simpan, maka form akan di-submit
+                document.getElementById("form-create").submit();
+                // Tampilkan popup success setelah konfirmasi
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: 'Catatan berhasil disimpan.',
+                    icon: 'success',
+                    timer: 6000
+                });
+                setTimeout(function() {
+                    window.location.href = "{{ route('user.catatan.index') }}";
+                }, 6000);
+            } else {
+                return false;
+            }
+        });
+    }
+</script>
 </body>
     <style>
         .btn {
