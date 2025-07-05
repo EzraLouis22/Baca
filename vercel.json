@@ -12,19 +12,19 @@
     }
   ],
   "env": {
-    "APP_ENV": "production",
+    "APP_ENV": "local",
     "APP_DEBUG": "true",
     "APP_KEY":"base64:x8zwZF87YAvl/ONJrNvwPYeeqYrHGC8rhkClUf2BzWo=",
-    "APP_URL": "https://baca.vercel.app",
+    "APP_URL": "http://localhost",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "VIEW_COMPILER_SOURCE": "/tmp",
-    "CACHE_DRIVER": "array",
-    "LOG_CHANNEL": "stderr",
-    "SESSION_DRIVER": "cookie"
+    "CACHE_DRIVER": "file",
+    "LOG_CHANNEL": "stack",
+    "SESSION_DRIVER": "file"
   },
   "outputDirectory": "public"
 }
