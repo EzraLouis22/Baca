@@ -11,12 +11,6 @@
       "dest": "api/index.php"
     }
   ],
-  "builds": [
-    {
-      "src": "Dockerfile",
-      "use": "@vercel/docker"
-    }
-  ],
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
