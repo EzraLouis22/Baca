@@ -8,4 +8,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        host: true, // biar dapat diakses publik
+        port: 3000, // sesuaikan dengan Replit
+        allowedHosts: [
+            '.replit.dev',
+            '.repl.co'
+        ]
+    },
 });
