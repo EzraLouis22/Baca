@@ -20,4 +20,10 @@ class AdminUser extends Authenticatable
         'role',
         'image',
     ];
+
+    public function catatanRenungan()
+    {
+        return $this->hasMany(CatatanRenungan::class, 'admin_users_id');
+    }
+
 }

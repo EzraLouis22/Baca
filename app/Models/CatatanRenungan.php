@@ -14,6 +14,7 @@ class CatatanRenungan extends Model
     protected $table = 'catatan_renungan';
 
     protected $fillable = [
+        'admin_users_id',
         'judul',
         'date_renungan',
         'prinsip',
@@ -24,5 +25,10 @@ class CatatanRenungan extends Model
     public function renungan()
     {
         return $this->belongsTo(Renungan::class, 'renungan_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(AdminUser::class, 'admin_users_id');
     }
 }

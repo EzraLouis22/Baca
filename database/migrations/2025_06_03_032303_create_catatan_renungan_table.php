@@ -10,6 +10,7 @@ class CreateCatatanRenunganTable extends Migration
     {
         Schema::create('catatan_renungan', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('admin_users_id'); // relasi ke user
             $table->string('prinsip');
             $table->text('penerapan');
             $table->string('judul');
@@ -20,12 +21,22 @@ class CreateCatatanRenunganTable extends Migration
                   ->references('id')
                   ->on('renungans')
                   ->onDelete('cascade');
+            $table->foreign('admin_users_id')
+                  ->references('id')
+                  ->on('admin_users')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    public function down()
-    {
-        Schema::dropIfExists('catatan_renungan');
-    }
+public function down()
+{
+    Schema::table('catatan_renungan', function (Blueprint $table) {
+        $table->dropForeign(['renungan_id']);
+    });
+
+    Schema::dropIfExists('catatan_renungan');
+    Schema::dropIfExists('renungans');
+}
+
 }

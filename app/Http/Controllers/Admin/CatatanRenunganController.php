@@ -13,7 +13,7 @@ class CatatanRenunganController extends Controller
 {
     public function index()
     {
-        $catatanRenungan = CatatanRenungan::all();
+        $catatanRenungan = CatatanRenungan::where('admin_users_id', auth()->id())->get();
         return view('user.catatan.index', compact('catatanRenungan'));
     }
 
@@ -37,6 +37,7 @@ class CatatanRenunganController extends Controller
         ]);
 
         CatatanRenungan::create([
+            'admin_users_id' => auth()->id(), // ambil ID user login
             'judul' => $request->input('judul'),
             'date_renungan' => $request->input('date_renungan'),
             'prinsip' => $request->input('prinsip'),
